@@ -26,6 +26,18 @@ Además del procesamiento de vídeos, el proyecto incluye una herramienta para e
 
 La evaluación se realiza mediante la comparación entre las anotaciones de referencia (ground truth) y las predicciones generadas por YOLO.
 
+## Dataset
+
+El dataset de imágenes utilizado en este trabajo no se almacena en el repositorio debido a su tamaño.
+
+Está disponible en el siguiente enlace externo:
+
+- OneDrive: https://universidaddeburgos-my.sharepoint.com/my?id=%2Fpersonal%2Fbgarroyo%5Fubu%5Fes%2FDocuments%2Fproyecto%20imagenes%20ganado%20yolo5%2Dfarm%2Dcattle&ga=1
+
+En caso de reproducibilidad, las inferencias pueden regenerarse ejecutando:
+```bash
+python evaluate.py
+```
 ### Scripts
 
 Los scripts de evaluación se encuentran en:
