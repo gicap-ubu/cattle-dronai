@@ -1,9 +1,6 @@
 cattle-dronai
 
-Detección de ganado vacuno mediante Inteligencia Artificial en vídeos capturados desde dron.
-
-Este proyecto implementa un prototipo en Python que permite procesar vídeos UAV, aplicar modelos YOLO y evaluar detección de ganado a nivel de frame.
-
+Además del procesamiento de vídeos, el proyecto incluye una herramienta para evaluar modelos de detección de ganado sobre imágenes extraídas de los vídeos capturados por UAV. La evaluación se realiza mediante la comparación entre las anotaciones de referencia (ground truth) y las predicciones generadas por YOLO.
 ------------------------------------------------------------
 FLUJO DEL PROYECTO
 ------------------------------------------------------------
