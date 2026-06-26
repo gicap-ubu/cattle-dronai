@@ -1,4 +1,4 @@
-python detect.py \
+time python detect.py \
 --weights yolo5-farm-cattle.pt \
 --source ~/ganado/images \
 --img 640 \
