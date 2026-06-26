@@ -6,4 +6,4 @@ python detect.py \
 --save-txt \
 --save-conf \
 --project runs_ganado \
---name inferencia_163
+--name inferencia_1632
