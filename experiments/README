@@ -4,7 +4,10 @@ Vídeo UAV
 Extracción de imágenes
       │
       ▼
- Inferencia YOLO
+Etiquetado de imágenes
+      │
+      ▼
+Inferencia con YOLO5_farm_cattle
       │
       ▼
 Comparación con Ground Truth
