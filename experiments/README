@@ -1,3 +1,22 @@
+Vídeo UAV
+      │
+      ▼
+Extracción de imágenes
+      │
+      ▼
+ Inferencia YOLO
+      │
+      ▼
+Comparación con Ground Truth
+(polígonos → bounding boxes)
+      │
+      ▼
+ TP · FP · FN
+      │
+      ▼
+Precision · Recall · F1 · AUPR
+
+
 # Evaluación sobre imágenes
 
 Además del procesamiento de vídeos, el proyecto incluye una herramienta para evaluar modelos de detección de ganado sobre imágenes extraídas de los vídeos capturados por UAV.
