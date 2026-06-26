@@ -1,25 +1,103 @@
-# Evaluación sobre imágenes
+cattle-dronai
 
-## 🔁 Pipeline del sistema
+Detección de ganado vacuno mediante Inteligencia Artificial en vídeos capturados desde dron.
 
-```text
+Este proyecto implementa un prototipo en Python que permite procesar vídeos UAV, aplicar modelos YOLO y evaluar detección de ganado a nivel de frame.
+
+------------------------------------------------------------
+FLUJO DEL PROYECTO
+------------------------------------------------------------
+
 Vídeo UAV
-    │
-    ▼
+    |
+    v
 Extracción de imágenes
-    │
-    ▼
+    |
+    v
 Etiquetado de imágenes
-    │
-    ▼
+    |
+    v
 Inferencia con YOLOv5_farm_cattle
-    │
-    ▼
+    |
+    v
 Comparación con Ground Truth
 (polígonos → bounding boxes)
-    │
-    ▼
+    |
+    v
 TP · FP · FN
-    │
-    ▼
-Precision · Recall · F1-score · AUPR
+    |
+    v
+Precision · Recall · F1 · AUPR
+
+------------------------------------------------------------
+EVALUACIÓN SOBRE IMÁGENES
+------------------------------------------------------------
+
+Además del procesamiento de vídeos, el proyecto incluye una herramienta para evaluar modelos de detección de ganado sobre imágenes extraídas de vídeos UAV.
+
+La evaluación se realiza comparando las anotaciones de referencia (ground truth) con las predicciones del modelo YOLO.
+
+------------------------------------------------------------
+DATASET
+------------------------------------------------------------
+
+El dataset de imágenes no se almacena en este repositorio debido a su tamaño.
+
+Está disponible en el siguiente enlace externo:
+
+https://universidaddeburgos-my.sharepoint.com/my?id=%2Fpersonal%2Fbgarroyo%5Fubu%5Fes%2FDocuments%2Fproyecto%20imagenes%20ganado%20yolo5-farm-cattle
+
+------------------------------------------------------------
+EJECUCIÓN
+------------------------------------------------------------
+
+python evaluate.py
+
+------------------------------------------------------------
+ESTRUCTURA DEL PROYECTO
+------------------------------------------------------------
+
+experiments/
+    experiment.py
+    evaluate.py
+    results/
+        results_experiment.csv
+        results_experiment.txt
+
+------------------------------------------------------------
+MÉTRICAS
+------------------------------------------------------------
+
+Se calculan las siguientes métricas:
+
+- True Positives (TP)
+- False Positives (FP)
+- False Negatives (FN)
+- Precision
+- Recall
+- F1-score
+- Area Under the Precision-Recall Curve (AUPR)
+
+Las métricas se evalúan para distintos umbrales de confianza e IoU (0.3, 0.5 y 0.7).
+
+------------------------------------------------------------
+CRITERIO DE EVALUACIÓN
+------------------------------------------------------------
+
+Las anotaciones de ground truth están definidas mediante polígonos, mientras que las predicciones del modelo YOLO son bounding boxes.
+
+Para su comparación:
+- Los polígonos se convierten a bounding boxes mínimas
+- Se calcula Intersection over Union (IoU)
+- Una detección es correcta si IoU > umbral
+
+------------------------------------------------------------
+CONSIDERACIONES IMPORTANTES
+------------------------------------------------------------
+
+En detección de objetos no se calcula True Negatives (TN), ya que el número de regiones negativas posibles es indefinido.
+
+Por ello, la evaluación se basa en:
+
+TP · FP · FN · Precision · Recall · F1 · AUPR
+
