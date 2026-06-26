@@ -1,0 +1,35 @@
+# Evaluación sobre imágenes
+
+Además del procesamiento de vídeos, el proyecto incluye una herramienta para evaluar modelos de detección de ganado sobre imágenes extraídas de los vídeos capturados por UAV.
+
+La evaluación se realiza mediante la comparación entre las anotaciones de referencia (ground truth) y las predicciones generadas por YOLO.
+
+### Scripts
+
+Los scripts de evaluación se encuentran en:
+experiments/
+├── experiment.py
+├── evaluate.py
+├── results/
+│   ├── results_experiment.csv
+│   └── results_experiment.txt
+Se calculan las métricas habituales en detección de objetos:
+
+- True Positives (TP)
+- False Positives (FP)
+- False Negatives (FN)
+- Precision
+- Recall
+- F1-score
+- Area Under the Precision-Recall Curve (AUPR)
+Las métricas se obtienen para distintos umbrales de confianza y diferentes valores de IoU (0.3, 0.5 y 0.7).
+
+### Criterio de evaluación
+
+Las anotaciones del conjunto de referencia están definidas mediante **polígonos**, mientras que las predicciones del modelo YOLO corresponden a **bounding boxes**.
+
+Para realizar la comparación, cada polígono se transforma en la caja delimitadora mínima (*bounding box*) y se calcula el **Intersection over Union (IoU)** entre ambas cajas. Una detección se considera correcta cuando el IoU supera el umbral establecido.
+
+### Consideraciones
+
+En este tipo de problemas **no se calcula el número de True Negatives (TN)**, ya que en detección de objetos el espacio de regiones negativas es prácticamente infinito y esta métrica no está definida. Por ello, la evaluación se basa en TP, FP, FN, Precision, Recall, F1-score y AUPR.
