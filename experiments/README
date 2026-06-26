@@ -55,8 +55,8 @@ ESTRUCTURA DEL PROYECTO
 ------------------------------------------------------------
 
 experiments/
-    experiment.py
-    evaluate.py
+    inferencia.py
+    metricas.py
     results/
         results_experiment.csv
         results_experiment.txt
